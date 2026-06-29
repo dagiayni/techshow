@@ -25,7 +25,7 @@ type ProductFormValues = z.infer<typeof productSchema>;
 
 export default function NewProductPage() {
   const { register, control, handleSubmit, formState: { errors } } = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+    resolver: zodResolver(productSchema) as any,
     defaultValues: {
       status: "in_stock",
       specifications: [{ key: "", value: "" }]
