@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Link from "next/link";
 import { ArrowLeft, Share2, Heart, ShieldCheck, Truck, Phone, MessageCircle } from "lucide-react";
 
-export default function ProductDetails({ params }: { params: { store: string, slug: string } }) {
+export default function ProductDetails({ params }: { params: Promise<{ store: string, slug: string }> }) {
+  const { store: storeSlug, slug } = use(params);
   const [activeTab, setActiveTab] = useState<'overview' | 'specs'>('overview');
   
   // Mock Data
@@ -29,11 +30,11 @@ export default function ProductDetails({ params }: { params: { store: string, sl
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-32">
       {/* Breadcrumbs */}
       <nav className="flex items-center text-sm font-medium text-muted-foreground mb-8">
-        <Link href={`/${params.store}`} className="hover:text-foreground">Home</Link>
+        <Link href={`/${storeSlug}`} className="hover:text-foreground">Home</Link>
         <span className="mx-2">/</span>
-        <Link href={`/${params.store}/products`} className="hover:text-foreground">Products</Link>
+        <Link href={`/${storeSlug}/products`} className="hover:text-foreground">Products</Link>
         <span className="mx-2">/</span>
-        <Link href={`/${params.store}/categories/smartphones`} className="hover:text-foreground">Smartphones</Link>
+        <Link href={`/${storeSlug}/categories/smartphones`} className="hover:text-foreground">Smartphones</Link>
         <span className="mx-2">/</span>
         <span className="text-foreground">{product.name}</span>
       </nav>

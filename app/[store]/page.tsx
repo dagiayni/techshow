@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function StoreHomepage({ params }: { params: { store: string } }) {
+export default async function StoreHomepage({ params }: { params: Promise<{ store: string }> }) {
+  const { store: storeSlug } = await params;
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -14,7 +16,7 @@ export default function StoreHomepage({ params }: { params: { store: string } })
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-card/50 backdrop-blur-sm text-sm font-medium mb-8">
             <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
-            Welcome to {params.store} Showroom
+            Welcome to {storeSlug} Showroom
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
@@ -28,14 +30,14 @@ export default function StoreHomepage({ params }: { params: { store: string } })
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Link 
-              href={`/${params.store}/products`}
+              href={`/${storeSlug}/products`}
               className="inline-flex justify-center items-center px-8 py-4 text-base font-medium text-background bg-foreground rounded-full hover:bg-muted-foreground transition-all duration-200"
             >
               Browse Products
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link 
-              href={`/${params.store}/branches`}
+              href={`/${storeSlug}/branches`}
               className="inline-flex justify-center items-center px-8 py-4 text-base font-medium text-foreground bg-card border border-border rounded-full hover:bg-muted transition-all duration-200"
             >
               Visit Store

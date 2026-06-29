@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Link from "next/link";
 import { LayoutGrid, List, SlidersHorizontal, ChevronDown } from "lucide-react";
 
-export default function ProductCatalog({ params }: { params: { store: string } }) {
+export default function ProductCatalog({ params }: { params: Promise<{ store: string }> }) {
+  const { store: storeSlug } = use(params);
   const [view, setView] = useState<'grid' | 'list'>('grid');
   
   // Mock data
@@ -100,7 +101,7 @@ export default function ProductCatalog({ params }: { params: { store: string } }
             : "space-y-6"
           }>
             {products.map(product => (
-              <Link href={`/${params.store}/products/${product.slug}`} key={product.id} className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all ${view === 'list' ? 'flex items-center' : 'block'}`}>
+              <Link href={`/${storeSlug}/products/${product.slug}`} key={product.id} className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all ${view === 'list' ? 'flex items-center' : 'block'}`}>
                 <div className={`bg-muted relative ${view === 'list' ? 'w-48 h-48 flex-shrink-0' : 'aspect-square w-full'}`}>
                   {/* Placeholder for Product Image */}
                   <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
