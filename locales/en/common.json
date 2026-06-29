@@ -1,0 +1,15 @@
+{
+  "common": {
+    "search": "Search",
+    "cart": "Cart",
+    "contact": "Contact Us",
+    "products": "Products",
+    "categories": "Categories",
+    "branches": "Branches",
+    "overview": "Overview",
+    "specifications": "Specifications",
+    "add_to_favorites": "Add to Favorites",
+    "call_store": "Call Store",
+    "whatsapp": "WhatsApp"
+  }
+}

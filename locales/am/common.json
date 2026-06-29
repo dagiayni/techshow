@@ -1,0 +1,15 @@
+{
+  "common": {
+    "search": "ፈልግ",
+    "cart": "ጋሪ",
+    "contact": "አግኙን",
+    "products": "ምርቶች",
+    "categories": "ምድቦች",
+    "branches": "ቅርንጫፎች",
+    "overview": "አጠቃላይ እይታ",
+    "specifications": "ዝርዝር መግለጫዎች",
+    "add_to_favorites": "ወደ ተወዳጆች አክል",
+    "call_store": "ወደ ሱቁ ይደውሉ",
+    "whatsapp": "ዋትስአፕ"
+  }
+}
